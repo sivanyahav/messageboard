@@ -21,8 +21,6 @@ namespace ariel {
                 cols=10;
              };
             ~Board(){
-                // delete rows;
-                // delete cols;
                 board.shrink_to_fit();
                 };
             void post(int row, int col, Direction d, string message);
