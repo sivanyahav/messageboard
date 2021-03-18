@@ -10,7 +10,7 @@ namespace ariel {
     void Board::resizeBoard(int row, int col){
 
         this-> rows =row;
-        this->cols =col;
+        this-> cols =col;
         this-> board.resize(row);
 
         for(int i=0; i < row; i++){
@@ -23,13 +23,8 @@ namespace ariel {
         int messageSize = message.length();
         bool flag = (d == Direction::Horizontal);
 
-        if(flag){
-            resizeBoard(std :: max(this->rows, row+1), std::max(this->cols, col+messageSize+1));
-        
-        }
-        else{
-            resizeBoard(std :: max(this->rows, row+messageSize+1), std::max(this->cols, col+1));
-        }
+        flag? resizeBoard(std :: max(this->rows, row+1), std::max(this->cols, col+messageSize+1)):
+              resizeBoard(std :: max(this->rows, row+messageSize+1), std::max(this->cols, col+1));
 
         for (int i = 0; i < messageSize; i++){
         board.at(row).at(col) = message[i];
