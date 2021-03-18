@@ -6,7 +6,11 @@ using namespace ariel;
 
 const char defaultChar = '_';
 namespace ariel {
-
+    
+    /*
+    This function resize board size,
+    and updates the number of rows and columns
+    */
     void Board::resizeBoard(int row, int col){
 
         this-> rows =row;
@@ -19,6 +23,10 @@ namespace ariel {
 
     }
 
+    /*
+    This function writes to the message board 
+    and if necessary increases the size of the board.
+    */
     void Board::post(int row, int col, Direction d, string message){
         int messageSize = message.length();
         bool flag = (d == Direction::Horizontal);
@@ -33,7 +41,11 @@ namespace ariel {
     
     }
 
-
+    /*
+    This function reads messages from the message board
+    and if necessary increases the size of the board, and
+    updates the default characters.
+    */
     string Board::read(int row, int col, Direction d, int num){
 
         string s;
