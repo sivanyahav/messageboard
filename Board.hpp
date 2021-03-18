@@ -17,8 +17,8 @@ namespace ariel {
         public:
             Board(){
                 board=vector<vector<char>>(5, vector<char>(5,'_'));
-                rows=10;
-                cols=10;
+                rows=5;
+                cols=5;
              };
             void post(int row, int col, Direction d, string message);
             string read(int row, int col,Direction d, int num);
