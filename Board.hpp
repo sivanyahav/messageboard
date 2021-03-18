@@ -20,9 +20,6 @@ namespace ariel {
                 rows=10;
                 cols=10;
              };
-            ~Board(){
-                board.shrink_to_fit();
-                };
             void post(int row, int col, Direction d, string message);
             string read(int row, int col,Direction d, int num);
             void show();
