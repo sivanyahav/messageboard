@@ -49,22 +49,22 @@ TEST_CASE("Post out of range") {
 
     //--------Horizontal----------//
 
-    //board size is: 0 X 0
+    //board size is: 5 X 5
     CHECK_NOTHROW(b.post(0,10,Direction::Horizontal, "  "));
 
-    //board size is: 0 X 10
+    //board size is: 5 X 10
     CHECK_NOTHROW(b.post(0,100,Direction::Horizontal, "  "));
    
-   //board size is: 0 X 100
+   //board size is: 5 X 100
     CHECK_NOTHROW(b.post(0,1000,Direction::Horizontal, "  "));
    
-   //board size is: 0 X 1000
+   //board size is: 5 X 1000
     CHECK_NOTHROW(b.post(0,10000,Direction::Horizontal, "  "));
 
 
     //--------Vertical----------//
 
-    //board size is: 0 X 10000
+    //board size is: 5 X 10000
     CHECK_NOTHROW(b.post(10,10000,Direction::Horizontal, "  "));
 
     //board size is: 10 X 10000
