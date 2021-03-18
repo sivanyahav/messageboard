@@ -16,7 +16,7 @@ namespace ariel {
 
         public:
             Board(){
-                board=vector<vector<char>>(10, vector<char>(10,'_'));
+                board=vector<vector<char>>(5, vector<char>(5,'_'));
                 rows=10;
                 cols=10;
              };
