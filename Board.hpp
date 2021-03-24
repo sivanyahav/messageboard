@@ -10,18 +10,20 @@ namespace ariel {
     class Board {
 
         private:
-        int rows, cols;
+        unsigned int maxRow, maxCol, minRow, minCol;
         vector<vector<char>> board;
-        void resizeBoard(int row, int col);
+        void resizeBoard(unsigned int row, unsigned int col);
+        unsigned int updateRows(unsigned int n1, unsigned int n2, bool flag, unsigned int num);
+        unsigned int updateCols(unsigned int n1, unsigned int n2, bool flag, unsigned int num);
+        void update(unsigned int row, unsigned int col, bool flag, unsigned num);
 
         public:
-            Board(){
-                board=vector<vector<char>>(5, vector<char>(5,'_'));
-                rows=5;
-                cols=5;
+            Board(): maxRow(0), maxCol(0),minRow(INT32_MAX), minCol(INT32_MAX){
+                board=vector<vector<char>>(0, vector<char>(0,'_'));
              };
-            void post(int row, int col, Direction d, string message);
-            string read(int row, int col,Direction d, int num);
+            
+            void post(unsigned int row, unsigned int col, Direction d, const string &message);
+            string read(unsigned int row, unsigned int col,Direction d, unsigned int num);
             void show();
     };
 }
