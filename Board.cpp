@@ -5,68 +5,7 @@ using namespace ariel;
 
 const char defaultChar = '_';
 namespace ariel {
-
-     unsigned int Board:: updateRows(unsigned int n1, unsigned int n2, bool flag, unsigned int num){
-         unsigned int max=0;
-            //Optionaly for max Row
-            if(n1>n2){
-                if(flag){
-                    if(n2-1<this->minRow){ this->minRow=n2-1;}
-                }
-                else{
-                    if(n2-num-1< this->minRow){ this->minRow=n2-num;}
-                }
-                 
-                if(n1>this->maxRow){this->maxRow=n1;}
-                max=n1;
-            }
-
-            else{
-                if(flag){
-                    if(n1-1<this->minRow){this->minRow=n1-1;}
-                }
-                else{
-                    if(n1-num-1<this->minRow){this->minRow=n1-num;}
-                }
-                
-                if(n2>this->maxRow){this->maxRow=n2;}
-                max=n2;
-            }
-
-        
-        return max;      
-    }
-
-//------------------------------------------------------------------------------------------
-
-    unsigned int Board:: updateCols(unsigned int n1, unsigned int n2, bool flag, unsigned int num){
-        unsigned int max=0;
-
-        if(n1>n2){
-            if(flag){
-                if(n2-num-1<this->minCol){ this->minCol=n2-num;}
-            }
-            else{
-                if(n2-1<this->minCol){this->minCol=n2-1;}
-            }
-            if(n1>this->maxCol){this->maxCol=n1;}
-            max=n1;
-        }
-
-        else{
-            if(flag){
-                if(n1-num-1<this->minCol){this->minCol=n1-num;}
-            }
-            else{ 
-                if(n1-1<this->minCol){ this->minCol=n1-1;}
-            }
-            if(n2>this->maxCol){this->maxCol=n2;}
-            max=n2;
-        }
-        return max;      
-    }
-
- //------------------------------------------------------------------------------------------
+ 
 
     void Board::update(unsigned int row, unsigned int col, bool flag, unsigned int num){
 
@@ -88,8 +27,19 @@ namespace ariel {
         }
 
         else{
-            flag? resizeBoard(updateRows(this->maxRow, row+1, flag, num),updateCols(this->maxCol, col+num+1, flag, num)):
-                  resizeBoard(updateRows(this->maxRow, row+num+1, flag, num),updateCols(this->maxCol, col+1, flag, num));
+            this->minCol=min(this->minCol, col);
+            this->minRow=min(this->minRow, row);
+
+            if(flag){
+                this->maxCol= max(this->maxCol, col+num+1);
+                this->maxRow=max(this->maxRow, row+1);
+            }
+            else{
+                this->maxCol=max(this->maxCol, col+1);
+                this->maxRow=max(this->maxRow, row+num+1);
+            }
+           
+            resizeBoard(this->maxRow, this->maxCol);
         }
         
     }
@@ -119,7 +69,7 @@ namespace ariel {
     void Board::post(unsigned int row, unsigned int col, Direction d, string const &message){
         unsigned int messageSize = message.length();
         bool flag = (d == Direction::Horizontal);
-
+        
         update(row,col,flag,messageSize);
 
         for (char ch: message){
