@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "Board.hpp"
 using namespace std;
@@ -69,7 +68,7 @@ namespace ariel {
 
  //------------------------------------------------------------------------------------------
 
-    void Board::update(unsigned int row, unsigned int col, bool flag, unsigned num){
+    void Board::update(unsigned int row, unsigned int col, bool flag, unsigned int num){
 
         //first time we update the board
         if(this->maxRow==0 && this->minRow==INT32_MAX && this->maxCol==0 && this->minCol==INT32_MAX){
@@ -105,7 +104,7 @@ namespace ariel {
 
         this-> board.resize(row);
 
-        for(int i=0; i < row; i++){
+        for(unsigned int i=0; i < row; i++){
             board.at(i).resize(col,defaultChar);
         }
 
@@ -117,8 +116,8 @@ namespace ariel {
     This function writes to the message board 
     and if necessary increases the size of the board.
     */
-    void Board::post(unsigned int row, unsigned int col, Direction d, const string &message){
-        int messageSize = message.length();
+    void Board::post(unsigned int row, unsigned int col, Direction d, string const &message){
+        unsigned int messageSize = message.length();
         bool flag = (d == Direction::Horizontal);
 
         update(row,col,flag,messageSize);
