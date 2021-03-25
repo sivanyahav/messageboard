@@ -13,8 +13,6 @@ namespace ariel {
         unsigned int maxRow, maxCol, minRow, minCol;
         vector<vector<char>> board;
         void resizeBoard(unsigned int row, unsigned int col);
-        unsigned int updateRows(unsigned int n1, unsigned int n2, bool flag, unsigned int num);
-        unsigned int updateCols(unsigned int n1, unsigned int n2, bool flag, unsigned int num);
         void update(unsigned int row, unsigned int col, bool flag, unsigned int num);
 
         public:
