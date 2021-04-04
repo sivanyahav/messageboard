@@ -73,8 +73,8 @@ namespace ariel {
         update(row,col,flag,messageSize);
 
         for (char ch: message){
-        board.at(row).at(col) = ch;
-        flag? col++ : row++;
+            board.at(row).at(col) = ch;
+            flag? col++ : row++;
         }
     
     }
@@ -93,7 +93,14 @@ namespace ariel {
         update(row,col,flag,num);
 
         for(int i=0; i<num; i++){
-            s+=board.at(row).at(col);
+            try
+            {
+                s+=board.at(row).at(col);
+            }
+            catch(const std::exception& e)
+            {
+                s+="_";
+            }
             flag? col++ : row++;
         }
         
