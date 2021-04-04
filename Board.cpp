@@ -90,8 +90,6 @@ namespace ariel {
         string s;
         bool flag = (d == Direction::Horizontal);
 
-        update(row,col,flag,num);
-
         for(int i=0; i<num; i++){
             try
             {
