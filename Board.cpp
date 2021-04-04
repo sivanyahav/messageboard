@@ -90,6 +90,7 @@ namespace ariel {
         string s;
         bool flag = (d == Direction::Horizontal);
 
+
         for(int i=0; i<num; i++){
             try
             {
