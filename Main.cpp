@@ -86,6 +86,8 @@ int main() {
           cin >> flag;
         }
         
+        b.show();
         if(!flag){cout << "bye bye !! " << endl;}
     }
+
 }
